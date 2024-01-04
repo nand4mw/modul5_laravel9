@@ -32,7 +32,7 @@ class LoginController extends Controller
         ]);
 
 
-        if (Auth::guard('operator_sistem')->attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('dashboard'); // Sesuaikan dengan halaman setelah login berhasil
         }
