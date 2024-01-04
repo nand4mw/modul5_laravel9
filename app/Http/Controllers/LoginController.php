@@ -26,16 +26,15 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email_operator' => 'required|email',
-            'password_operator' => 'required',
+            'password' => 'required',
         ]);
 
-        $credentials = $request->only('email_operator', 'password_operator');
 
         if (Auth::guard('operator_sistem')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard'); // Sesuaikan dengan halaman setelah login berhasil
+            return redirect()->intended('dashboard'); // Sesuaikan dengan halaman setelah login berhasil
         }
 
         return redirect()->back()->withErrors(['msg' => 'Invalid email or password.']);

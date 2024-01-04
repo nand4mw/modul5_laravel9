@@ -50,8 +50,8 @@
                                         </div>
                                         <div class="mb-4 position-relative">
                                             <label class="mb-1 form-label">Password</label>
-                                            <input type="password_operator" id="password_operator" class="form-control"
-                                                placeholder="123456" name="password_operator" required>
+                                            <input type="password" id="password" class="form-control"
+                                                placeholder="123456" name="password" required>
                                             <span class="show-pass eye">
                                                 <i class="fa fa-eye-slash"></i>
                                                 <i class="fa fa-eye"></i>
