@@ -3,7 +3,7 @@
 
 <head>
     <!-- Title -->
-    <title>title</title>
+    <title></title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -73,24 +73,33 @@
                 </div>
             </div>
         </div>
-       
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+
+        <!--**********************************
+            Header start
+        ***********************************-->
         <header class="header">
             <div class="header-content">
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-                              Dashboard
+                                {{-- {{ $title }} --}}Tambah Data Operator
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
+
+
 
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-bs-toggle="dropdown">
                                     <img src="https://unibamadura.ac.id/page/images/profil/1.png" width="20" alt="">
                                     <div class="header-info">
                                         <span class="text-black"><strong>Ananda MW</strong></span>
-                                        <p class="fs-12 mb-0">anandaMW@gmail.com</p>
+                                        <p class="fs-12 mb-0">AnandaMW@gmail.com</p>
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
@@ -123,11 +132,11 @@
                 </nav>
             </div>
         </header>
-
+       
         <div class="deznav">
             <div class="deznav-scroll mm-active">
                 <ul class="metismenu mm-show" id="menu">
-                    <li class=""><a href="/" class="ai-icon mm-active" aria-expanded="false">
+                    <li class=""><a href="/dashboard" class="ai-icon mm-active" aria-expanded="false">
                             <i class="flaticon-381-networking"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -149,14 +158,14 @@
                     </li>
                 </ul>
                 <div class="add-menu-sidebar">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1053/1053210.png" width="50" alt=""
-                        class="me-3">
-                    <a href="/logout" class="font-w500 mb-0">Logout</a>
+                    <img src="https://cdn-icons-png.flaticon.com/512/1053/1053210.png" width="50" alt="" class="me-3">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link font-w500 mb-0" style="text-decoration: none; color: inherit;">Logout</button>
+                    </form>
                 </div>
-                <div class="copyright">
-                    <p><strong>T2S System</strong> © 2023 All Rights Reserved</p>
-                    <p>Made with <span class="heart"></span> by Yosi Bagus</p>
-                </div>
+                
+              
             </div>
         </div>
         <!--**********************************
@@ -177,72 +186,127 @@
                                 aria-label="Close"></button>
                         </div>
                     @endif
-                    @yield('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/operator">Data Operator</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tambah Data Operator</li>
+        </ol>
+    </nav>
+
+    <form method="POST" action="" class="card">
+        @csrf
+        <div class="card-header">
+            Form Operator
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="nama_operator">Nama Operator</label>
+                        <input type="text" class="form-control @error('nama_operator') is-invalid @enderror"
+                            value="{{ old('nama_operator') }}" name="nama_operator" id="nama_operator">
+                        @error('nama_operator')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-
-
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <footer class="footer">
-            <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="http://yosibgsdr.site/" target="_blank">Yosi
-                        Bagus</a> 2023</p>
+            <div class="row mt-2">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="email_operator">Email Operator</label>
+                        <input type="email" class="form-control @error('email_operator') is-invalid @enderror"
+                            value="{{ old('email_operator') }}" name="email_operator" id="email_operator">
+                        @error('email_operator')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            value="{{ old('password') }}" name="password" id="password">
+                        @error('password')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
             </div>
-        </footer>
-        <!--**********************************
-            Footer end
-        ***********************************-->
-    </div>
-    <!--**********************************
-        Main wrapper end
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-floppy"></i> Simpan</button>
+                <a href="/operator" class="btn btn-danger">kembali</a>
+            </div>
+        </div>
+    </form>
 
-        ***********************************-->
 
-    <!-- Required vendors -->
-    <script src="{{ asset('') }}assets/vendor/global/global.min.js"></script>
-    <script src="{{ asset('') }}assets/vendor/chart-js/chart.bundle.min.js"></script>
-    <script src="{{ asset('') }}assets/vendor/owl-carousel/owl.carousel.js"></script>
-    <!-- Chart piety plugin files -->
-    <script src="{{ asset('') }}assets/vendor/peity/jquery.peity.min.js"></script>
+</div>
+</div>
+</div>
+<!--**********************************
+Content body end
+***********************************-->
 
-    <!-- Apex Chart -->
-    <script src="{{ asset('') }}assets/vendor/apexchart/apexchart.js"></script>
 
-    <!-- Datatable -->
-    <script src="{{ asset('') }}assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <!-- Dashboard 1 -->
-    <script src="{{ asset('') }}assets/js/dashboard/dashboard-1.js"></script>
+<!--**********************************
+Footer start
+***********************************-->
+<footer class="footer">
+<div class="copyright">
+   
+</div>
+</footer>
+<!--**********************************
+Footer end
+***********************************-->
+</div>
+<!--**********************************
+Main wrapper end
 
-    <script src="{{ asset('') }}assets/js/plugins-init/datatables.init.js"></script>
-    <script src="{{ asset('') }}assets/js/custom.min.js"></script>
-    <script src="{{ asset('') }}assets/js/deznav-init.js"></script>
-    <script>
-        (function() {
-            'use strict'
+***********************************-->
 
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation')
+<!-- Required vendors -->
+<script src="{{ asset('') }}assets/vendor/global/global.min.js"></script>
+<script src="{{ asset('') }}assets/vendor/chart-js/chart.bundle.min.js"></script>
+<script src="{{ asset('') }}assets/vendor/owl-carousel/owl.carousel.js"></script>
+<!-- Chart piety plugin files -->
+<script src="{{ asset('') }}assets/vendor/peity/jquery.peity.min.js"></script>
 
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
+<!-- Apex Chart -->
+<script src="{{ asset('') }}assets/vendor/apexchart/apexchart.js"></script>
 
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })()
-    </script>
+<!-- Datatable -->
+<script src="{{ asset('') }}assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<!-- Dashboard 1 -->
+<script src="{{ asset('') }}assets/js/dashboard/dashboard-1.js"></script>
+
+<script src="{{ asset('') }}assets/js/plugins-init/datatables.init.js"></script>
+<script src="{{ asset('') }}assets/js/custom.min.js"></script>
+<script src="{{ asset('') }}assets/js/deznav-init.js"></script>
+<script>
+(function() {
+'use strict'
+
+// Fetch all the forms we want to apply custom Bootstrap validation styles to
+var forms = document.querySelectorAll('.needs-validation')
+
+// Loop over them and prevent submission
+Array.prototype.slice.call(forms)
+    .forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
 
 
 </body>

@@ -1,4 +1,4 @@
-@extends('layout.format')
+@extends('layout.template')
 
 @section('content')
     <nav aria-label="breadcrumb">

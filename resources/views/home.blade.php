@@ -2,12 +2,9 @@
 
 @section('content')
     <div class="alert alert-primary" role="alert">
-        Selamat Datang di Halaman Administrator
+        Selamat Datang di Halaman 
     </div>
-    <!--**********************************
-                Content body start
-            ***********************************-->
-
+  
     <div class="row">
         <div class="col-xl-6 col-xxl-12">
             <div class="row">
@@ -22,7 +19,7 @@
                                         </span>
                                         <div class="media-body">
                                             <p class="fs-14 mb-2">Jumlah Jurusan</p>
-                                            <span class="title text-black font-w600">0</span>
+                                            <span class="title text-black font-w600">{{ $total_jurusan }}</span>
                                         </div>
                                     </div>
                                     <div class="progress" style="height:5px;">
@@ -44,7 +41,7 @@
                                         </span>
                                         <div class="media-body">
                                             <p class="fs-14 mb-2">Akses Admin</p>
-                                            <span class="title text-black font-w600">10</span>
+                                            <span class="title text-black font-w600">{{ $total_admin }}</span>
                                         </div>
                                     </div>
                                     <div class="progress" style="height:5px;">
@@ -66,7 +63,7 @@
                                         </span>
                                         <div class="media-body">
                                             <p class="fs-14 mb-2">Total L/P</p>
-                                            <span class="title text-black font-w600">3/1</span>
+                                            <span class="title text-black font-w600">{{ $total_laki }}/{{ $total_perempuan }}</span>
                                         </div>
                                     </div>
                                     <div class="progress" style="height:5px;">
@@ -102,13 +99,12 @@
                                         </span>
                                         <div class="media-body">
                                             <p class="fs-14 mb-2">Total Mahasiswa</p>
-                                            <span class="title text-black font-w600">3</span>
+                                            <span class="title text-black font-w600">{{ $total_mahasiswa }}</span>
                                         </div>
                                     </div>
                                     <div class="progress" style="height:5px;">
                                         <div class="progress-bar bg-warning" style="width: 100%; height:5px;"
                                             role="progressbar">
-
                                         </div>
                                     </div>
                                 </div>
@@ -128,14 +124,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Informatika</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Manajemen</td>
-                                            <td>10</td>
-                                        </tr>
+                                        @foreach ($array as $get)
+                                    <tr>
+                                        <td>{{ $get['nama_jurusan'] }}</td>
+                                        <td>{{ $get['jumlah_jurusan'] }}</td>
+                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -166,8 +160,7 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <h5 class="mb-0" style="color: #008eff">Selamat Datang, Yosi Bagus
-                                            Sadar Rasuli!</h5>
+                                        <h5 class="mb-0" style="color: #008eff">Selamat Datang, Ananda MW!</h5>
                                     </div>
                                 </div>
                             </div>

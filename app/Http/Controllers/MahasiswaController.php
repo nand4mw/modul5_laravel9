@@ -14,7 +14,7 @@ class MahasiswaController extends Controller
     {
         $this->mahasiswa = new MahasiswaModel;
     }
-    //
+
     public function index()
     {
         $data = [
@@ -59,6 +59,13 @@ class MahasiswaController extends Controller
         return redirect('/mahasiswa')->with(['success' => 'Berhasil Menyimpan Data Mahasiswa']);
     }
 
+    public function showJumlahMahasiswa()
+    {
+        $jumlahMahasiswa = MahasiswaModel::count();
+
+        return view('home', ['nama_mahasiswa' => $jumlahMahasiswa]);
+    }
+
     public function hapus($id)
     {
         MahasiswaModel::where('id_mahasiswa', $id)->delete();
@@ -73,6 +80,8 @@ class MahasiswaController extends Controller
         ];
         return view('mahasiswa.mahasiswa_edit', $data);
     }
+
+
     public function edit_action($id, Request $request)
     {
         $rules = [
